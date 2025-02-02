@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [ "delete" ],
+      "name": "req",
+      "route": "api"
+    }
+  ]
+}
