@@ -17,7 +17,7 @@ public class ReadAll
 
     [Function("ReadAll")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "read")] HttpRequestData req)
     {
         _logger.LogInformation("Azure Function triggered: Reading from PostgreSQL.");
 
@@ -38,6 +38,8 @@ public class ReadAll
             using (var conn = new NpgsqlConnection(connString))
             {
                 await conn.OpenAsync();
+
+                // Read
                 using (var command = new NpgsqlCommand("SELECT * FROM inventory", conn))
                 using (var reader = await command.ExecuteReaderAsync())
                 {
@@ -68,15 +70,4 @@ public class ReadAll
 
         return response;
     }
-
-    //private static string GetConnectionString()
-    //{
-    //    string host = Environment.GetEnvironmentVariable("PG_HOST") ?? "mydemoserver.postgres.database.azure.com";
-    //    string user = Environment.GetEnvironmentVariable("PG_USER") ?? "mylogin";
-    //    string dbname = Environment.GetEnvironmentVariable("PG_DBNAME") ?? "postgres";
-    //    string password = Environment.GetEnvironmentVariable("PG_PASSWORD") ?? "<server_admin_password>";
-    //    string port = Environment.GetEnvironmentVariable("PG_PORT") ?? "5432";
-
-    //    return $"Server={host};User Id={user};Database={dbname};Port={port};Password={password};SSLMode=Prefer";
-    //}
 }

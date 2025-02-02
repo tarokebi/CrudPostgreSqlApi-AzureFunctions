@@ -6,7 +6,7 @@
       "direction": "in",
       "methods": [ "delete" ],
       "name": "req",
-      "route": "api"
+      "route": "api/delete"
     }
   ]
 }

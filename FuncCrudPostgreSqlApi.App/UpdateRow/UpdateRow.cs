@@ -17,7 +17,7 @@ public class UpdateRow
 
     [Function("UpdateRow")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "put", Route = "")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "put", Route = "update")] HttpRequestData req)
     {
         _logger.LogInformation("Azure Function triggered: Reading from PostgreSQL.");
 
@@ -40,7 +40,7 @@ public class UpdateRow
                 // Open connection
                 await conn.OpenAsync();
 
-                // UpdateRow
+                // Update
                 using (var command = new NpgsqlCommand("UPDATE inventory SET quantity = @q WHERE name = @n", conn))
                 {
                     command.Parameters.AddWithValue("n", "banana");

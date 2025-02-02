@@ -17,7 +17,7 @@ public class DeleteRow
 
     [Function("DeleteRow")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "delete")] HttpRequestData req)
     {
         _logger.LogInformation("Azure Function triggered: Reading from PostgreSQL.");
 
@@ -40,7 +40,7 @@ public class DeleteRow
                 // Open connection
                 await conn.OpenAsync();
 
-                // DeleteRow
+                // Delete
                 using (var command = new NpgsqlCommand("DELETE FROM inventory WHERE name = @n", conn))
                 {
                     command.Parameters.AddWithValue("n", "orange");

@@ -6,7 +6,7 @@
       "direction": "in",
       "methods": [ "get" ],
       "name": "req",
-      "route": "api"
+      "route": "api/read"
     }
   ]
 }

@@ -16,7 +16,7 @@ public class CreateTable
 
     [Function("CreateTable")]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "")] HttpRequestData req)
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "create")] HttpRequestData req)
     {
         _logger.LogInformation("Processing request to initialize database.");
 

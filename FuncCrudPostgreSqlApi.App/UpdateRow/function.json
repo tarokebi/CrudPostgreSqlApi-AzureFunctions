@@ -6,7 +6,7 @@
       "direction": "in",
       "methods": [ "put" ],
       "name": "req",
-      "route": "api"
+      "route": "api/update"
     }
   ]
 }
